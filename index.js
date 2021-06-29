@@ -40,3 +40,5 @@ function mainMenu() {
         )
     )
 }
+
+function viewEmployees ()
