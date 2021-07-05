@@ -45,17 +45,33 @@ function mainMenu() {
         }.then((choice) => {
             switch(choice) {
                 case "viewEmployees":
-                    return viewEmployees();
-                case "viewEmployeesByDepartment":
-                    return viewEmployeesByDepartment();
-                case "viewEmployeesByManager":
-                    return viewEmployeesByManager();
-                case "More":
-                    return moreMainMenu();
+                    return viewEmployeesChoice();
+                case "viewRoles":
+                    return viewRolesChoice();
+                case "viewDepartments":
+                    return viewDepartmentsChoice();
+                case "addNewEmployee":
+                    return addEmployeeChoice();
+                case "addNewRole":
+                    return addRoleChoice();
+                case "addNewDepartment":
+                    return addDepartmentChoice();
+                case "updateEmployeeRole":
+                    return updateEmployeeRoleChoice();
+                case "exit":
+                    return exit();
             }
         }
         )
     )
 }
 
-function viewEmployees ()
+function viewEmployeesChoice() {
+    dbFunctions.viewAllEmployees((res) => (
+        res.forEach(({ id, first_name, last_name, title, department, salary, manager}) => {
+            console.log(`Name: ${first_name} ${last_name}, ID: ${id}, Title: ${title}, Department: ${department}, Salary: ${salary}, Manager: ${manager}`);
+        })
+    )).then(
+        mainMenu()
+    )
+}
