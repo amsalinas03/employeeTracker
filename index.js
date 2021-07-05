@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-import { addEmployee, addRole, addDepartment, viewDepartments, viewRoles, viewAllEmployees, updateEmployeeRole } from "./db";
+const { addEmployee, addRole, addDepartment, viewDepartments, viewRoles, viewAllEmployees, updateEmployeeRole } = require("./db/index")
 
 function mainMenu() {
     console.log("Welcome to the Employee Tracker System")
@@ -67,7 +67,7 @@ function mainMenu() {
 }
 
 function viewEmployeesChoice() {
-    dbFunctions.viewAllEmployees((res) => (
+    viewAllEmployees((res) => (
         res.forEach(({ id, first_name, last_name, title, department, salary, manager}) => {
             console.log(`Name: ${first_name} ${last_name}, ID: ${id}, Title: ${title}, Department: ${department}, Salary: ${salary}, Manager: ${manager}`);
         })

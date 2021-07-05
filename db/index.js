@@ -41,12 +41,3 @@ function updateEmployeeRole(employeeID, roleID) {
     )
 }
 
-module.exports = {
-    addEmployee: addEmployee,
-    addRole: addRole,
-    addDepartment: addDepartment,
-    viewDepartments: viewDepartments,
-    viewRoles: viewRoles,
-    viewAllEmployees: viewAllEmployees,
-    updateEmployeeRole: updateEmployeeRole
-}
