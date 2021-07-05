@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-import * as dbFunctions from "./db/index"
+import { addEmployee, addRole, addDepartment, viewDepartments, viewRoles, viewAllEmployees, updateEmployeeRole } from "./db";
 
 function mainMenu() {
     console.log("Welcome to the Employee Tracker System")
