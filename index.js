@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+addEmployee() = require("./db/index")
 
 function mainMenu() {
     console.log("Welcome to the Employee Tracker System")
