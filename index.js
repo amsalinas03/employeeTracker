@@ -46,20 +46,28 @@ function mainMenu() {
             switch(choice) {
                 case "viewEmployees":
                     return viewEmployeesChoice();
+                    break;
                 case "viewRoles":
                     return viewRolesChoice();
+                    break;
                 case "viewDepartments":
                     return viewDepartmentsChoice();
+                    break;
                 case "addNewEmployee":
                     return addEmployeeChoice();
+                    break;
                 case "addNewRole":
                     return addRoleChoice();
+                    break;
                 case "addNewDepartment":
                     return addDepartmentChoice();
+                    break;
                 case "updateEmployeeRole":
                     return updateEmployeeRoleChoice();
+                    break;
                 case "exit":
                     return exit();
+                    break;
             }
         }
         )
@@ -92,7 +100,7 @@ function viewDepartmentsChoice() {
     ))
 }
 function addDepartmentChoice() {
-    const department = inquirer.prompt([
+    department = inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -103,6 +111,7 @@ function addDepartmentChoice() {
     console.log(`${department.name} added to list!`);
     mainMenu;
 }
+
 function addEmployeeChoice() {
     let employees = viewAllEmployees();
     const managerChoices = employees.map(({first_name, last_name}) => console.log(`${first_name} ${last_name}`)
