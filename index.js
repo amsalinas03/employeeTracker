@@ -42,7 +42,7 @@ function mainMenu() {
                 value: "exit"
             }
         ]
-        }.then((choice) => {
+        }).then((choice) => {
             switch(choice) {
                 case "viewEmployees":
                     return viewEmployeesChoice();
@@ -63,7 +63,6 @@ function mainMenu() {
             }
         }
         )
-    )
 }
 
 function viewEmployeesChoice() {
@@ -73,5 +72,44 @@ function viewEmployeesChoice() {
         })
     )).then(
         mainMenu()
-    )
+ )
+   viewAllEmployees()
 }
+
+function viewRolesChoice() {
+    viewRoles((res) => (
+        res.forEach(( title, salary, department) => {
+            console.log(`${title}, Salary: $${salary}, Department: ${department}`)
+        })
+    ))
+}
+
+function viewDepartmentsChoice() {
+    viewDepartments()
+}
+
+function addEmployeeChoice() {
+    inquirer.prompt(
+        {
+            type: "input",
+            name: "newEmployeeFirstName",
+            message: "What is the employee's first name?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeLastName",
+            message: "What is the employee's last name?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeId",
+            message: "What is the employee's ID?"
+        },
+        {
+            type: "input",
+            name: "newEmployeeManager",
+            message: "What is the manager of the employee's ID?"
+        }
+    ).then((answers))
+}
+mainMenu();
