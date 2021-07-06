@@ -30,7 +30,7 @@ function mainMenu() {
                 value: "addNewRole"
             },
             {
-                name: "Add a Deparmtnet",
+                name: "Add a Department",
                 value: "addNewDepartment"
             },
             {
@@ -91,7 +91,18 @@ function viewDepartmentsChoice() {
         })
     ))
 }
-
+function addDepartmentChoice() {
+    const department = inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the name of the new department?"
+        }
+    ]);
+    addDepartment(department);
+    console.log(`${department.name} added to list!`);
+    mainMenu;
+}
 function addEmployeeChoice() {
     let employees = viewAllEmployees();
     const managerChoices = employees.map(({first_name, last_name}) => console.log(`${first_name} ${last_name}`)
