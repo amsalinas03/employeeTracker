@@ -78,17 +78,24 @@ function viewEmployeesChoice() {
 
 function viewRolesChoice() {
     viewRoles((res) => (
-        res.forEach(( title, salary, department) => {
+        res.forEach(({ title, salary, department }) => {
             console.log(`${title}, Salary: $${salary}, Department: ${department}`)
         })
     ))
 }
 
 function viewDepartmentsChoice() {
-    viewDepartments()
+    viewDepartments((res) => (
+        res.forEach(({name}) => {
+            console.log(`${name}`)
+        })
+    ))
 }
 
 function addEmployeeChoice() {
+    let employees = viewAllEmployees();
+    const managerChoices = employees.map(({first_name, last_name}) => console.log(`${first_name} ${last_name}`)
+    )
     inquirer.prompt(
         {
             type: "input",
@@ -106,10 +113,11 @@ function addEmployeeChoice() {
             message: "What is the employee's ID?"
         },
         {
-            type: "input",
+            type: "list",
             name: "newEmployeeManager",
-            message: "What is the manager of the employee's ID?"
+            message: "Who is this employee's manager?",
+            choices: managerChoices
         }
-    ).then((answers))
+    )
 }
 mainMenu();
