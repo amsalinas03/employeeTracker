@@ -3,7 +3,7 @@ const { addEmployee, addRole, addDepartment, viewDepartments, viewRoles, viewAll
 
 function mainMenu() {
     console.log("Welcome to the Employee Tracker System")
-    inquirer.prompt(
+    const choice = inquirer.prompt(
         {
         type: "list",
         name: "mainMenuChoices",
@@ -42,7 +42,7 @@ function mainMenu() {
                 value: "exit"
             }
         ]
-        }).then((choice) => {
+        });
             switch(choice) {
                 case "viewEmployees":
                     return viewEmployeesChoice();
@@ -69,8 +69,6 @@ function mainMenu() {
                     return exit();
                     break;
             }
-        }
-        )
 }
 
 function viewEmployeesChoice() {
@@ -100,13 +98,18 @@ function viewDepartmentsChoice() {
     ))
 }
 function addDepartmentChoice() {
-    department = inquirer.prompt([
+    inquirer.prompt([
         {
             type: "input",
             name: "name",
             message: "What is the name of the new department?"
         }
-    ]);
+    ]).then((answers) => {
+        const department = {
+            name: answers
+        }
+    });
+   
     addDepartment(department);
     console.log(`${department.name} added to list!`);
     mainMenu;
@@ -139,5 +142,9 @@ function addEmployeeChoice() {
             choices: managerChoices
         }
     )
+}
+
+function exit() {
+    console.log("its working")
 }
 mainMenu();
