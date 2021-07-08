@@ -3,9 +3,8 @@ const { addEmployee, addRole, addDepartment, viewDepartments, viewRoles, viewAll
 
 function mainMenu() {
     console.log("Welcome to the Employee Tracker System")
-    const choice = inquirer.prompt(
-        {
-        type: "list",
+    const { choices  } = inquirer.prompt(
+        {type: "list",
         name: "mainMenuChoices",
         message: "Please choose from the following options",
         choices: [
@@ -42,35 +41,35 @@ function mainMenu() {
                 value: "exit"
             }
         ]
-        });
-            switch(choice) {
-                case "viewEmployees":
-                    return viewEmployeesChoice();
-                    break;
-                case "viewRoles":
-                    return viewRolesChoice();
-                    break;
-                case "viewDepartments":
-                    return viewDepartmentsChoice();
-                    break;
-                case "addNewEmployee":
-                    return addEmployeeChoice();
-                    break;
-                case "addNewRole":
-                    return addRoleChoice();
-                    break;
-                case "addNewDepartment":
-                    return addDepartmentChoice();
-                    break;
-                case "updateEmployeeRole":
-                    return updateEmployeeRoleChoice();
-                    break;
-                case "exit":
-                    return exit();
-                    break;
-            }
-}
-
+        })
+    switch(choices) {
+        case "viewEmployees":
+            return viewEmployeesChoice();
+            break;
+        case "viewRoles":
+            return viewRolesChoice();
+            break;
+        case "viewDepartments":
+            return viewDepartmentsChoice();
+            break;
+        case "addNewEmployee":
+            return addEmployeeChoice();
+            break;
+        case "addNewRole":
+            return addRoleChoice();
+            break;
+        case "addNewDepartment":
+            return addDepartmentChoice();
+            break;
+        case "updateEmployeeRole":
+            return updateEmployeeRoleChoice();
+            break;
+        case "exit":
+            exit();
+            break;
+        }
+};
+mainMenu();
 function viewEmployeesChoice() {
     viewAllEmployees((res) => (
         res.forEach(({ id, first_name, last_name, title, department, salary, manager}) => {
@@ -145,6 +144,5 @@ function addEmployeeChoice() {
 }
 
 function exit() {
-    console.log("its working")
+    console.log("its working");
 }
-mainMenu();
